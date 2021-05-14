@@ -12,6 +12,7 @@ public class Person {
 	
 	public Person(Grid grid) {
 		this.grid = grid;
+		rebirth();
 	}
 	
 	public void tick() {
@@ -70,5 +71,22 @@ public class Person {
 	
 	private void rebirth() {
 		
+	}
+	
+	//0 is low class
+	//2 is high class
+	public int classRank() {
+		  var mostWealth = grid.getMostWealth();
+		  if (wealth <= mostWealth/3) {
+			  return 0;
+		  }
+		  if (wealth <= mostWealth * 2.0f/3.0f) {
+			  return 1;
+		  }
+		  return 2;
+	}
+
+	public int getWealth() {
+		return wealth;
 	}
 }

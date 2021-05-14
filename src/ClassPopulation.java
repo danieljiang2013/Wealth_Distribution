@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ClassPopulation {
@@ -13,7 +14,13 @@ public class ClassPopulation {
 	}
 	
 	public void update(Grid grid) {
-		
+		int counts[] = {0,0,0};
+		for (Person p : grid.getPopulation()) {
+			counts[p.classRank()] ++;
+		} 
+		for (int i = 0; i < counts.length; i++) {
+			classes.get(i).add(counts[i]);
+		}
 	}
 
 	public List<LineGraph<Integer>> getLineGraphs() {

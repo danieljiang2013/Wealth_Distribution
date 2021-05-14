@@ -18,6 +18,7 @@ public class LineGraph<T> {
 		counts.add(value);
 	}
 
+
 	public String getName() {
 		return name;
 	}
