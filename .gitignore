@@ -3,3 +3,9 @@
 /.project
 /.classpath
 .projects
+
+.idea/
+Wealth_Distribution.iml
+class/
+out/
+

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Person {
 	private int age;
@@ -29,9 +28,24 @@ public class Person {
 		
 		age ++;
 	}
-	
+
+	// Returns number of persons that have the same cell location as this object
+	public int numPeopleOnSamePatch(){
+		var persons = grid.getPopulation();
+		var ret = 0;
+		for (int x = 0; x < persons.size(); x++) {
+			var position = persons.get(x).location.getPosition();
+			if (position == this.location.getPosition()){
+				ret ++;
+			}
+		}
+		return ret;
+	}
+	// Grain at a patch gets divided equally amongst all people at that patch
 	public void harvest() {
-		
+		var grainChanged = location.getGrain() / numPeopleOnSamePatch();
+		this.wealth += grainChanged; // increase
+		location.harvestGrain(grainChanged); // decrease
 	}
 	
 	private void move(Cell newLocation) {
@@ -51,7 +65,7 @@ public class Person {
 		for (Vector2<Integer> direction : directions) {
 			int totalGrain = 0;
 			for (int i = 1; i <= vision; i++) {
-				var newPos = location.getPoistion().add(direction.multiply(i));
+				var newPos = location.getPosition().add(direction.multiply(i));
 				totalGrain += grid.cellAt(newPos.x, newPos.y).getGrain();
 			}
 			if(totalGrain > bestTotal) {
@@ -64,7 +78,7 @@ public class Person {
 	}
 	
 	private void move(Vector2<Integer> direction) {
-		var newPosition = location.getPoistion().add(direction);
+		var newPosition = location.getPosition().add(direction);
 		var newCell = grid.cellAt(newPosition.x, newPosition.y);
 		move(newCell);
 	}
