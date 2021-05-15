@@ -5,12 +5,14 @@ public class Person {
 	private int wealth;
 	private int lifeExpectancy;
 	private int metabolism;
-	private int vision;
+	private int vision = Configuration.maxVision;
 	private Cell location;
 	private Grid grid;
 	
-	public Person(Grid grid) {
+	public Person(Grid grid, Cell cell) {
 		this.grid = grid;
+		this.location = cell;
+		System.out.println("Person at - "+ location.getPosition().x + "," + location.getPosition().y );
 		rebirth();
 	}
 	
@@ -43,7 +45,14 @@ public class Person {
 	}
 	// Grain at a patch gets divided equally amongst all people at that patch
 	public void harvest() {
-		var grainChanged = location.getGrain() / numPeopleOnSamePatch();
+		if (this.location == null){
+			return;
+		}
+		var num = numPeopleOnSamePatch();
+		var grainChanged = location.getGrain();
+		if (num != 0){
+			grainChanged = location.getGrain() / num;
+		}
 		this.wealth += grainChanged; // increase
 		location.harvestGrain(grainChanged); // decrease
 	}

@@ -31,8 +31,8 @@ class Cells {
         maximiseInitialGrain();
     }
 
-    private int randomize() {
-        return (int) (Math.random() * 100);
+    private double randomize() {
+        return (Math.random());
     }
 
     public Cell getCellAt(int x, int y) {

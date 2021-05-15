@@ -4,6 +4,7 @@
 /.classpath
 .projects
 
+*.csv
 .idea/
 Wealth_Distribution.iml
 class/

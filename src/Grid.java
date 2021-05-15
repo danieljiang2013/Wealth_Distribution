@@ -16,8 +16,17 @@ public class Grid {
 
 		population = new ArrayList<Person>();
 		for(int i = 0; i < numPeople; i ++) {
-			population.add(new Person(this));
+			population.add(new Person(this, cellAt(randomize(), randomize())));
 		}
+	}
+	// random number between 0 and size
+	private int randomize(){
+		var random = (int) (Math.random() * (size));
+		System.out.println(random);
+		if (random >= 0 && random <= size){
+			return random;
+		}
+		return 0;
 	}
 	public int getSize(){
 		return this.size;
