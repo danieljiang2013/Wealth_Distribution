@@ -35,7 +35,7 @@ public class Person {
 	// multiple people, divide evenly
 	public void harvest() {
 		int share = this.grid.getNumPeopleAt(location.getX(), location.getY());
-		location.setGrain(location.getGrain() / share);
+		location.setGrain((location.getGrain()) - location.getGrain() / share);
 		this.wealth += location.getGrain() / share;
 	}
 
