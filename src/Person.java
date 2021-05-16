@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class Person {
 	private int age;
@@ -74,8 +75,14 @@ public class Person {
 	}
 
 	private void rebirth() {
-		this.lifeExpectancy=
+		Random rnd = new Random();
+		this.lifeExpectancy = Configuration.lifeExpectancyMin
+				+ rnd.nextInt(Configuration.lifeExpectancyMax - Configuration.lifeExpectancyMin + 1);
 
+		this.metabolism = 1 + rnd.nextInt(Configuration.metabolismMax);
+		this.wealth = this.metabolism + rnd.nextInt(50);
+		this.vision = 1 + rnd.nextInt(Configuration.maxVision);
+		this.age = rnd.nextInt(lifeExpectancy);
 	}
 
 	// 0 is low class
