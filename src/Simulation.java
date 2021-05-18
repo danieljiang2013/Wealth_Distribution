@@ -2,7 +2,7 @@
 public class Simulation {
 	
 	public static void main(String[] args) {
-		Grid grid = new Grid(30, Configuration.numPeople);
+		Grid grid = new Grid(Configuration.gridSize, Configuration.numPeople);
 		Stats stats = new Stats();
 		int ticks = 100;
 		
