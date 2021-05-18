@@ -30,7 +30,16 @@ public class Grid {
 	}
 
 	public Cell cellAt(int x, int y) {
-		return cells.getCellAt(x,y);
+		int xx = x % size;
+		if(xx < 0) {
+			xx = size + xx;
+		}
+		int yy = y % size;
+		int tyy = yy;
+		if(yy < 0) {
+			yy = size + yy;
+		}
+		return cells.getCellAt(xx,yy);
 	}
 
 	public void tick() {
