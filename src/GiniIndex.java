@@ -12,7 +12,7 @@ public class GiniIndex {
 		
 		ArrayList<Integer> sortedWealths = new ArrayList<Integer>();
 		for (int i = 0; i < grid.getPopulation().size(); i++) {
-			sortedWealths.add(grid.getPopulation().get(i).getWealth());
+			sortedWealths.add((int)grid.getPopulation().get(i).getWealth());
 		}
 		Collections.sort(sortedWealths);
 		

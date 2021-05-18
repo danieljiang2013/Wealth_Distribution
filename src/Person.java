@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Person {
 	private int age;
-	private int wealth;
+	private double wealth;
 	private int lifeExpectancy;
 	private int metabolism;
 	private int vision = Configuration.maxVision;
@@ -14,7 +14,7 @@ public class Person {
 	public Person(Grid grid, Cell cell) {
 		this.grid = grid;
 		this.location = cell;
-		System.out.println("Person at - "+ location.getPosition().x + "," + location.getPosition().y );
+		//System.out.println("Person at - "+ location.getPosition().x + "," + location.getPosition().y );
 		rebirth();
 	}
 
@@ -131,7 +131,7 @@ public class Person {
 		return 2;
 	}
 
-	public int getWealth() {
+	public double getWealth() {
 		return wealth;
 	}
 

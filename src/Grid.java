@@ -6,14 +6,13 @@ public class Grid {
 	private List<Person> population;
 	private Cells cells;
 	private int size;
-	private int mostWealth;
+	private double mostWealth;
 	private int totalWealth;
 	
 	Grid(int size, int numPeople){
 		this.size = size;
 
 		cells = new Cells(size);
-		cells.printCells();
 		population = new ArrayList<Person>();
 		for(int i = 0; i < numPeople; i ++) {
 			population.add(new Person(this, cellAt(randomize(), randomize())));
@@ -58,7 +57,7 @@ public class Grid {
 		}
 	}
 
-	public int getMostWealth() {
+	public double getMostWealth() {
 		return mostWealth;
 	}
 
