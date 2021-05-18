@@ -7,12 +7,14 @@ public class Person {
 	private int wealth;
 	private int lifeExpectancy;
 	private int metabolism;
-	private int vision;
+	private int vision = Configuration.maxVision;
 	private Cell location;
 	private Grid grid;
-
-	public Person(Grid grid) {
+	
+	public Person(Grid grid, Cell cell) {
 		this.grid = grid;
+		this.location = cell;
+		System.out.println("Person at - "+ location.getPosition().x + "," + location.getPosition().y );
 		rebirth();
 	}
 
@@ -31,12 +33,30 @@ public class Person {
 		age++;
 	}
 
-	// harvest the grain in the cell that it the person is standing on, if there are
-	// multiple people, divide evenly
+	// Returns number of persons that have the same cell location as this object
+	public int numPeopleOnSamePatch(){
+		var persons = grid.getPopulation();
+		var ret = 0;
+		for (int x = 0; x < persons.size(); x++) {
+			var position = persons.get(x).location.getPosition();
+			if (position == this.location.getPosition()){
+				ret ++;
+			}
+		}
+		return ret;
+	}
+	// Grain at a patch gets divided equally amongst all people at that patch
 	public void harvest() {
-		int share = this.grid.getNumPeopleAt(location.getX(), location.getY());
-		location.setGrain((location.getGrain()) - location.getGrain() / share);
-		this.wealth += location.getGrain() / share;
+		if (this.location == null){
+			return;
+		}
+		var num = numPeopleOnSamePatch();
+		var grainChanged = location.getGrain();
+		if (num != 0){
+			grainChanged = location.getGrain() / num;
+		}
+		this.wealth += grainChanged; // increase
+		location.harvestGrain(grainChanged); // decrease
 	}
 
 	private void move(Cell newLocation) {
@@ -56,7 +76,7 @@ public class Person {
 		for (Vector2<Integer> direction : directions) {
 			int totalGrain = 0;
 			for (int i = 1; i <= vision; i++) {
-				var newPos = location.getPoistion().add(direction.multiply(i));
+				var newPos = location.getPosition().add(direction.multiply(i));
 				totalGrain += grid.cellAt(newPos.x, newPos.y).getGrain();
 			}
 			if (totalGrain > bestTotal) {
@@ -69,7 +89,7 @@ public class Person {
 	}
 
 	private void move(Vector2<Integer> direction) {
-		var newPosition = location.getPoistion().add(direction);
+		var newPosition = location.getPosition().add(direction);
 		var newCell = grid.cellAt(newPosition.x, newPosition.y);
 		move(newCell);
 	}
