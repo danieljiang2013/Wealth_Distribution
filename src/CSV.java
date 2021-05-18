@@ -34,7 +34,7 @@ public class CSV {
 				if(j -1 != lineGraphs.size())
 					content += ",";
 			}			
-			content += "/n";
+			content += "\n";
 		}
 	
 	}
