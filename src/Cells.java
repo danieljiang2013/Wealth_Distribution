@@ -17,30 +17,36 @@ class Cells {
             }
             patches.add(column);
         }
+        
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 setupBestLand(patches.get(x).get(y));
             }
         }
+        System.out.println("\nAfter setting up Best land ");
+        printCells();
 
         for (int x = 0; x < 5; x++) {
             repeat5task();
         }
-        /*
+
         for (int x = 0; x < 10; x++) {
             repeat10task();
         }
-        maximiseInitialGrain();
 
-         */
+        maximiseInitialGrain();
+        
+        System.out.println("\nAfter setting up Grain ");
+        printCells();
+
     }
 
     public void printCells() {
-        System.out.println("Position | Grain | Max Grain ");
+        System.out.println("x,y | CurrentGrain | Max-Grain ");
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 var patch = patches.get(x).get(y);
-                System.out.printf("%s,%s     | %d | %d \n", patch.getX(), patch.getY(), patch.getGrain(), patch.getMaxGrain());
+                System.out.printf("%s,%s  | %.4f | %.4f \n", patch.getX(), patch.getY(), patch.getGrain(), patch.getMaxGrain());
             }
         }
     }
@@ -125,8 +131,8 @@ class Cells {
     }
 
     private void diffuseGrain(Cell patch, List<Cell> neighbours) {
-        final int originalGrainValue = patch.getGrain();
-        final double grainToDiffuse = (originalGrainValue * (this.diffuseNumber * 100));
+        final double originalGrainValue = patch.getGrain();
+        final double grainToDiffuse = (originalGrainValue / (this.diffuseNumber * 100));
         final double equalSizeGrain = grainToDiffuse / 8;
         int grainDistributed = 0;
 
@@ -134,7 +140,7 @@ class Cells {
         for (int i = 0; i < neighbours.size(); i++) {
             var neighbour = neighbours.get(i);
             var newGrain = neighbour.getGrain() + equalSizeGrain;
-            neighbour.setInitialGrain((int) newGrain);
+            neighbour.setInitialGrain(newGrain);
             grainDistributed += equalSizeGrain;
         }
 
