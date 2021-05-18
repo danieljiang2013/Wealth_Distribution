@@ -93,16 +93,29 @@ public class Person {
 		var newCell = grid.cellAt(newPosition.x, newPosition.y);
 		move(newCell);
 	}
-
+	private int randomize(int limit){
+		var random = (int) (Math.random() * (limit));
+		if (random >= 0 && random <= limit){
+			return random;
+		}
+		return 0;
+	}
 	private void rebirth() {
+		/*
 		Random rnd = new Random();
 		this.lifeExpectancy = Configuration.lifeExpectancyMin
 				+ rnd.nextInt(Configuration.lifeExpectancyMax - Configuration.lifeExpectancyMin + 1);
-
 		this.metabolism = 1 + rnd.nextInt(Configuration.metabolismMax);
 		this.wealth = this.metabolism + rnd.nextInt(50);
 		this.vision = 1 + rnd.nextInt(Configuration.maxVision);
 		this.age = rnd.nextInt(lifeExpectancy);
+		 */
+		this.lifeExpectancy = Configuration.lifeExpectancyMin
+				+ randomize(Configuration.lifeExpectancyMax - Configuration.lifeExpectancyMin + 1);
+		this.metabolism = 1 + randomize(Configuration.metabolismMax);
+		this.wealth = this.metabolism + randomize(50);
+		this.vision = 1 + randomize(Configuration.maxVision);
+		this.age = randomize(lifeExpectancy);
 	}
 
 	// 0 is low class

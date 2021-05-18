@@ -5,9 +5,9 @@ public class Configuration {
 
 	public static int numPeople = 50;
 	public static int maxVision = 5;
-	public static int metabolismMax;
-	public static int lifeExpectancyMin;
-	public static int lifeExpectancyMax;
+	public static int metabolismMax = 10;
+	public static int lifeExpectancyMin = 1;
+	public static int lifeExpectancyMax = 60;
 	public static double percentBestLand = 0.25;
 
 

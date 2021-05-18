@@ -13,16 +13,16 @@ public class Grid {
 		this.size = size;
 
 		cells = new Cells(size);
-
+		cells.printCells();
 		population = new ArrayList<Person>();
 		for(int i = 0; i < numPeople; i ++) {
 			population.add(new Person(this, cellAt(randomize(), randomize())));
 		}
+
 	}
 	// random number between 0 and size
 	private int randomize(){
 		var random = (int) (Math.random() * (size));
-		System.out.println(random);
 		if (random >= 0 && random <= size){
 			return random;
 		}

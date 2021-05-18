@@ -22,13 +22,27 @@ class Cells {
                 setupBestLand(patches.get(x).get(y));
             }
         }
+
         for (int x = 0; x < 5; x++) {
             repeat5task();
         }
-        for (int x = 0; x < 5; x++) {
+        /*
+        for (int x = 0; x < 10; x++) {
             repeat10task();
         }
         maximiseInitialGrain();
+
+         */
+    }
+
+    public void printCells() {
+        System.out.println("Position | Grain | Max Grain ");
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                var patch = patches.get(x).get(y);
+                System.out.printf("%s,%s     | %d | %d \n", patch.getX(), patch.getY(), patch.getGrain(), patch.getMaxGrain());
+            }
+        }
     }
 
     private double randomize() {
@@ -45,10 +59,6 @@ class Cells {
                 patches.get(x).get(y).tick();
             }
         }
-    }
-
-    public void setupPatch() {
-
     }
 
     // Gives some patches the highest amount of grain possible
