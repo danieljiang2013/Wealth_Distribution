@@ -173,7 +173,8 @@ class Cells {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 var newMaxGrain = patches.get(x).get(y).getGrain();
-                patches.get(x).get(y).setMaxGrain(newMaxGrain);
+                patches.get(x).get(y).setInitialGrain((int)newMaxGrain); // round to whole number
+                patches.get(x).get(y).setMaxGrain((int)newMaxGrain); // round to whole number
             }
         }
     }
