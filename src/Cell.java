@@ -15,21 +15,22 @@ public class Cell {
 	private int tickInterval = Configuration.gainGrowthInterval;
 	private int grainGrowth = Configuration.numGrainGrown;
 
-
 	public Cell(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
-	public void tick() {
-		if(tickInterval == currentInterval) {
+
+  public void tick() {
+		if (tickInterval == currentInterval) {
 			grain = Math.min(grain + grainGrowth, maxGrain);
 		}
-		currentInterval ++;
+		currentInterval++;
 		currentInterval = currentInterval % tickInterval;
 	}
 
 	public int getX() { return x; }
 	public int getY() { return y; }
+  
 	public Vector2<Integer> getPosition(){
 		return new Vector2<Integer>(getX(), getY());
 	}
@@ -49,6 +50,5 @@ public class Cell {
 	public void harvestGrain(int value) {
 		this.grain -= value;
 	}
-
 
 }
