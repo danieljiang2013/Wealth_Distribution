@@ -17,28 +17,23 @@ class Cells {
             }
             patches.add(column);
         }
-        
+
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 setupBestLand(patches.get(x).get(y));
             }
         }
         System.out.println("\nAfter setting up Best land ");
-  
-  
+
         for (int x = 0; x < 5; x++) {
             repeat5task();
         }
-        
 
         for (int x = 0; x < 10; x++) {
             repeat10task();
         }
-        
-   
+
         maximiseInitialGrain();
-   
-      
 
     }
 
@@ -47,7 +42,8 @@ class Cells {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 var patch = patches.get(x).get(y);
-                System.out.printf("%s,%s  | %.4f | %.4f \n", patch.getX(), patch.getY(), patch.getGrain(), patch.getMaxGrain());
+                System.out.printf("%s,%s  | %.4f | %.4f \n", patch.getX(), patch.getY(), patch.getGrain(),
+                        patch.getMaxGrain());
             }
         }
     }
@@ -67,13 +63,11 @@ class Cells {
             }
         }
     }
-    
-
 
     // Gives some patches the highest amount of grain possible
     // these patches are the "best land"
     private void setupBestLand(Cell patch) {
-        patch.setMaxGrain(0);        
+        patch.setMaxGrain(0);
         if (Configuration.percentBestLand >= randomize()) {
             patch.setMaxGrain(Configuration.maxGrain);
             patch.setInitialGrain(Configuration.maxGrain);
@@ -119,7 +113,7 @@ class Cells {
         try {
             neighbours.add(patches.get(location.x + 1).get(location.y - 1)); // bottom left
         } catch (IndexOutOfBoundsException e) {
-           // System.out.println("No neighbour bottom left");
+            // System.out.println("No neighbour bottom left");
         }
         try {
             neighbours.add(patches.get(location.x + 1).get(location.y + 1)); // bottom right
@@ -159,11 +153,11 @@ class Cells {
                     patch.setInitialGrain(patch.getMaxGrain());
                     // need to verify if this is placed correctly w.r.t Netlogo if/else
                 }
-             
+
             }
         }
-        
-       repeat10task();
+
+        repeat10task();
     }
 
     private void repeat10task() {
@@ -174,12 +168,13 @@ class Cells {
             }
         }
     }
-    private void maximiseInitialGrain(){
+
+    private void maximiseInitialGrain() {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 var newMaxGrain = patches.get(x).get(y).getGrain();
-                patches.get(x).get(y).setInitialGrain((int)newMaxGrain); // round to whole number
-                patches.get(x).get(y).setMaxGrain((int)newMaxGrain); // round to whole number
+                patches.get(x).get(y).setInitialGrain((int) newMaxGrain); // round to whole number
+                patches.get(x).get(y).setMaxGrain((int) newMaxGrain); // round to whole number
             }
         }
     }
