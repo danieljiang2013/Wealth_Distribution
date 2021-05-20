@@ -6,7 +6,7 @@ public class Grid {
 	private List<Person> population;
 	private Cells cells;
 	private int size;
-	private double mostWealth;
+	private int mostWealth;
 	private int totalWealth;
 	
 	Grid(int size, int numPeople){
@@ -43,16 +43,22 @@ public class Grid {
 
 	public void tick() {
 		
-		calcMostWealth();
-		calcTotalWealth();
 		
 		for(int i = 0; i < population.size(); i++) {
-			population.get(i).tick();
+			population.get(i).harvest();
 		}
 		
 		harvest();
 		
+		for(int i = 0; i < population.size(); i++) {
+			population.get(i).move_eat_die();
+		}
+		
 		cells.tick();
+		
+		calcMostWealth();
+		calcTotalWealth();
+		System.out.println(this.mostWealth);
 	}
 	
 	private void harvest() {
@@ -75,7 +81,7 @@ public class Grid {
 		}
 	}
 
-	public double getMostWealth() {
+	public int getMostWealth() {
 		return mostWealth;
 	}
 

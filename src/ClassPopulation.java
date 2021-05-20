@@ -10,7 +10,6 @@ public class ClassPopulation {
 		classes.add(new LineGraph<Integer>("Poor"));
 		classes.add(new LineGraph<Integer>("Medium"));
 		classes.add(new LineGraph<Integer>("Rich"));
-		
 	}
 	
 	public void update(Grid grid) {

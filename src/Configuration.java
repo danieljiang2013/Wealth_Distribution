@@ -1,7 +1,7 @@
 
 public class Configuration {
 
-	public static int gridSize = 50;
+	public static int gridSize = 51;
 
 	public static int numPeople = 250;
 	public static int maxVision = 5;

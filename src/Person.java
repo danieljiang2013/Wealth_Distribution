@@ -15,14 +15,14 @@ public class Person {
 		this.grid = grid;
 		this.location = cell;
 		rebirth();
+		this.age = randomize(this.lifeExpectancy);
 	}
 
-	public void tick() {
+	public void move_eat_die() {
 	
 		var direction = determineDirection();
 		
-		harvest();
-		
+
 		move(direction);
 		
 		//eat
@@ -116,16 +116,16 @@ public class Person {
 	// 2 is high class
 	public int classRank() {
 		var mostWealth = grid.getMostWealth();
-		if (wealth <= mostWealth / 3) {
+		if (wealth <= mostWealth / 3.0f) {
 			return 0;
 		}
-		if (wealth <= mostWealth * 2.0f / 3.0f) {
+		if (wealth <= mostWealth * (2.0f / 3.0f)) {
 			return 1;
 		}
 		return 2;
 	}
 
-	public double getWealth() {
+	public int getWealth() {
 		return wealth;
 	}
 

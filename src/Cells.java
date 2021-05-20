@@ -25,19 +25,19 @@ class Cells {
         }
         System.out.println("\nAfter setting up Best land ");
   
-
+        printCells();
         for (int x = 0; x < 5; x++) {
             repeat5task();
         }
         
-   
+        printCells();
         for (int x = 0; x < 10; x++) {
             repeat10task();
         }
         
-  
+        printCells();
         maximiseInitialGrain();
-        
+        printCells();
       
 
     }
@@ -73,7 +73,7 @@ class Cells {
     // Gives some patches the highest amount of grain possible
     // these patches are the "best land"
     private void setupBestLand(Cell patch) {
-        patch.setMaxGrain(0);
+        patch.setMaxGrain(0);        
         if (Configuration.percentBestLand >= randomize()) {
             patch.setMaxGrain(Configuration.maxGrain);
             patch.setInitialGrain(Configuration.maxGrain);
@@ -135,8 +135,8 @@ class Cells {
 
     private void diffuseGrain(Cell patch, List<Cell> neighbours) {
         final double originalGrainValue = patch.getGrain();
-        final double grainToDiffuse = (originalGrainValue * this.diffuseNumber);
-        final double equalSizeGrain = grainToDiffuse / 8;
+        final double grainToDiffuse = (originalGrainValue * diffuseNumber);
+        final double equalSizeGrain = grainToDiffuse / 8.0f;
         int grainDistributed = 0;
 
         // Each neighbor gets an eighth share;
@@ -155,14 +155,15 @@ class Cells {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 Cell patch = patches.get(x).get(y);
-                if (patch.getMaxGrain() != 0) {
+                if (patch.getMaxGrain() > 30) {
                     patch.setInitialGrain(patch.getMaxGrain());
                     // need to verify if this is placed correctly w.r.t Netlogo if/else
-                    diffuseGrain(patch, getNeighbours(patch));
                 }
              
             }
         }
+        
+       repeat10task();
     }
 
     private void repeat10task() {
