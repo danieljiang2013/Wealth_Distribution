@@ -42,16 +42,25 @@ public class Grid {
 	}
 
 	public void tick() {
+		
 		calcMostWealth();
 		calcTotalWealth();
-
-		cells.tick();
-
 		
 		for(int i = 0; i < population.size(); i++) {
 			population.get(i).tick();
 		}
+		
+		harvest();
+		
+		cells.tick();
 	}
+	
+	private void harvest() {
+		for (int i = 0; i < population.size(); i++) {
+			population.get(i).getLocation().setInitialGrain(0);
+		}
+	}
+	
 
 	public List<Person> getPopulation() {
 		return population;

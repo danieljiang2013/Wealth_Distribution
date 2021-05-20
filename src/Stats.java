@@ -9,10 +9,10 @@ public class Stats {
 	private List<LineGraph<Double>> lorenzCurves = new ArrayList<LineGraph<Double>>(); 
 	
 	public void update(Grid grid) {
-		classHistogram.update(grid);
+		//classHistogram.update(grid);
 		giniIndex.update(grid);
 		population.update(grid);
-		lorenzCurves.add(lorenzCurve.curve(grid));
+		//lorenzCurves.add(lorenzCurve.curve(grid));
 	}
 	
 	public List<LineGraph<Integer>> getClassHistogram() {

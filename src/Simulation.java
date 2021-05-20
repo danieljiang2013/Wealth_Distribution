@@ -4,7 +4,7 @@ public class Simulation {
 	public static void main(String[] args) {
 		Grid grid = new Grid(Configuration.gridSize, Configuration.numPeople);
 		Stats stats = new Stats();
-		int ticks = 100;
+		int ticks = 1000;
 		
 		
 		for(int i = 0; i < ticks; i++) {

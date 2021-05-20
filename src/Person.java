@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Person {
 	private int age;
-	private double wealth;
+	private int wealth;
 	private int lifeExpectancy;
 	private int metabolism;
 	private int vision = Configuration.maxVision;
@@ -14,23 +14,27 @@ public class Person {
 	public Person(Grid grid, Cell cell) {
 		this.grid = grid;
 		this.location = cell;
-		//System.out.println("Person at - "+ location.getPosition().x + "," + location.getPosition().y );
 		rebirth();
 	}
 
 	public void tick() {
-		harvest();
-
+	
 		var direction = determineDirection();
+		
+		harvest();
+		
 		move(direction);
-
+		
+		//eat
 		wealth -= metabolism;
-
-		if (wealth <= 0 || age >= lifeExpectancy) {
+		
+		age++;
+		
+		if (wealth < 0 || age >= lifeExpectancy) {
 			rebirth();
 		}
 
-		age++;
+		
 	}
 
 	// Returns number of persons that have the same cell location as this object
@@ -56,7 +60,6 @@ public class Person {
 			grainChanged = location.getGrain() / num;
 		}
 		this.wealth += grainChanged; // increase
-		location.harvestGrain(grainChanged); // decrease
 	}
 
 	private void move(Cell newLocation) {
@@ -101,21 +104,12 @@ public class Person {
 		return 0;
 	}
 	private void rebirth() {
-		/*
-		Random rnd = new Random();
-		this.lifeExpectancy = Configuration.lifeExpectancyMin
-				+ rnd.nextInt(Configuration.lifeExpectancyMax - Configuration.lifeExpectancyMin + 1);
-		this.metabolism = 1 + rnd.nextInt(Configuration.metabolismMax);
-		this.wealth = this.metabolism + rnd.nextInt(50);
-		this.vision = 1 + rnd.nextInt(Configuration.maxVision);
-		this.age = rnd.nextInt(lifeExpectancy);
-		 */
 		this.lifeExpectancy = Configuration.lifeExpectancyMin
 				+ randomize(Configuration.lifeExpectancyMax - Configuration.lifeExpectancyMin + 1);
 		this.metabolism = 1 + randomize(Configuration.metabolismMax);
 		this.wealth = this.metabolism + randomize(50);
 		this.vision = 1 + randomize(Configuration.maxVision);
-		this.age = randomize(lifeExpectancy);
+		this.age = 0;
 	}
 
 	// 0 is low class

@@ -1,6 +1,6 @@
 
 // The world is two dimensional and is divided up into a grid of patches (cells).
-// Each patch is a square piece of “ground” over which people can move.
+// Each patch is a square piece of â€œgroundâ€� over which people can move.
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Cell {
 	}
 
 	public void tick() {
-		if (tickInterval == currentInterval) {
+		if (tickInterval == 0) {
 			grain = Math.min(grain + grainGrowth, maxGrain);
 		}
 		currentInterval++;
