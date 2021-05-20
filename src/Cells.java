@@ -25,19 +25,19 @@ class Cells {
         }
         System.out.println("\nAfter setting up Best land ");
   
-        printCells();
+  
         for (int x = 0; x < 5; x++) {
             repeat5task();
         }
         
-        printCells();
+
         for (int x = 0; x < 10; x++) {
             repeat10task();
         }
         
-        printCells();
+   
         maximiseInitialGrain();
-        printCells();
+   
       
 
     }
@@ -137,7 +137,7 @@ class Cells {
         final double originalGrainValue = patch.getGrain();
         final double grainToDiffuse = (originalGrainValue * diffuseNumber);
         final double equalSizeGrain = grainToDiffuse / 8.0f;
-        int grainDistributed = 0;
+        double grainDistributed = 0;
 
         // Each neighbor gets an eighth share;
         for (int i = 0; i < neighbours.size(); i++) {
