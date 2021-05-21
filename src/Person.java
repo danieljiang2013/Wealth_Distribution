@@ -42,8 +42,8 @@ public class Person {
 		var persons = grid.getPopulation();
 		var ret = 0;
 		for (int x = 0; x < persons.size(); x++) {
-			var position = persons.get(x).location.getPosition();
-			if (position == this.location.getPosition()){
+			var position = persons.get(x).location;
+			if (position == this.location){
 				ret ++;
 			}
 		}
@@ -51,13 +51,10 @@ public class Person {
 	}
 	// Grain at a patch gets divided equally amongst all people at that patch
 	public void harvest() {
-		if (this.location == null){
-			return;
-		}
 		var num = numPeopleOnSamePatch();
 		var grainChanged = location.getGrain();
 		if (num != 0){
-			grainChanged = location.getGrain() / num;
+			grainChanged /= num;
 		}
 		this.wealth += grainChanged; // increase
 	}

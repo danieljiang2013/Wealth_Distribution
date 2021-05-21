@@ -21,7 +21,7 @@ public class Cell {
 	}
 
 	public void tick() {
-		if (tickInterval == 0) {
+		if (currentInterval == 0) {
 			grain = Math.min(grain + grainGrowth, maxGrain);
 		}
 		currentInterval++;
