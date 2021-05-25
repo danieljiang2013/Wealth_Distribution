@@ -10,6 +10,7 @@ public class Person {
 	private int vision = Configuration.maxVision;
 	private Cell location;
 	private Grid grid;
+	private int income = 0;
 	
 	public Person(Grid grid, Cell cell) {
 		this.grid = grid;
@@ -56,6 +57,7 @@ public class Person {
 		if (num != 0){
 			grainChanged /= num;
 		}
+		income = (int)grainChanged;
 		this.wealth += grainChanged; // increase
 	}
 
@@ -107,6 +109,7 @@ public class Person {
 		this.wealth = this.metabolism + randomize(50);
 		this.vision = 1 + randomize(Configuration.maxVision);
 		this.age = 0;
+		this.income = 0;
 	}
 
 	// 0 is low class
@@ -132,5 +135,9 @@ public class Person {
 
 	public void setWealth(int wealth) {
 		this.wealth = wealth;		
+	}
+	
+	public int getIncome() {
+		return this.income;
 	}
 }

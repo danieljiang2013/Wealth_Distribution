@@ -5,6 +5,11 @@ public class Configuration {
 		MultipleRuns,
 		ChangeTaxFrom0To100
 	}
+	
+	public enum TaxSystem {
+		Wealth,
+		Income
+	}
 
 	public static int gridSize = 51;
 
@@ -22,7 +27,8 @@ public class Configuration {
 	
 	public static double tax = 0;
 	public static int numRuns = 3;
-	public static SimulationType simulationType = SimulationType.MultipleRuns;
+	public static SimulationType simulationType = SimulationType.ChangeTaxFrom0To100;
+	public static TaxSystem taxSystem = TaxSystem.Income;
 
 	
 
