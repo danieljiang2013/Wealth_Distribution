@@ -13,6 +13,8 @@ public class Configuration {
 	public static int numGrainGrown = 4;
 	public static int gainGrowthInterval = 1;
 	public static int maxGrain = 50; // netlogo global
+	
+	public static int numRuns = 3;
 
 
 }

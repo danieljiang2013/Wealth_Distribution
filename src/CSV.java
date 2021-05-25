@@ -10,7 +10,7 @@ public class CSV {
 	
 
 	
-	public <T> CSV(LineGraph<T> lineGraph) {
+	public <T extends Number> CSV(LineGraph<T> lineGraph) {
 		this.name = lineGraph.getName();
 		content += lineGraph.getName() + "\n";
 		
@@ -19,7 +19,7 @@ public class CSV {
 		}		
 	}
 	
-	public <T> CSV(List<LineGraph<T>> lineGraphs, String name) {
+	public <T extends Number> CSV(List<LineGraph<T>> lineGraphs, String name) {
 		this.name = name;
 		int length = 0;
 		for (LineGraph<T> lineGraph : lineGraphs) {

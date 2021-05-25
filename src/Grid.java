@@ -58,7 +58,7 @@ public class Grid {
 		
 		calcMostWealth();
 		calcTotalWealth();
-		System.out.println(this.mostWealth);
+//		System.out.println(this.mostWealth);
 	}
 	
 	private void harvest() {
