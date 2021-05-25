@@ -129,4 +129,8 @@ public class Person {
 	public Cell getLocation() {
 		return location;
 	}
+
+	public void setWealth(int wealth) {
+		this.wealth = wealth;		
+	}
 }

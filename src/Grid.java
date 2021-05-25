@@ -8,6 +8,7 @@ public class Grid {
 	private int size;
 	private int mostWealth;
 	private int totalWealth;
+	TaxPopulation taxPopulation;
 	
 	Grid(int size, int numPeople){
 		this.size = size;
@@ -17,6 +18,8 @@ public class Grid {
 		for(int i = 0; i < numPeople; i ++) {
 			population.add(new Person(this, cellAt(randomize(), randomize())));
 		}
+		
+		taxPopulation = new TaxPopulation(population);
 
 	}
 	// random number between 0 and size
@@ -56,8 +59,12 @@ public class Grid {
 		
 		cells.tick();
 		
+		
+		
 		calcMostWealth();
 		calcTotalWealth();
+		
+		taxPopulation.tick();
 //		System.out.println(this.mostWealth);
 	}
 	

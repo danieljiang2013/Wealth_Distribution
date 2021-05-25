@@ -14,7 +14,10 @@ public class Configuration {
 	public static int gainGrowthInterval = 1;
 	public static int maxGrain = 50; // netlogo global
 	
+	
+	public static double tax = 0.5;
 	public static int numRuns = 3;
+	
 
 
 }
