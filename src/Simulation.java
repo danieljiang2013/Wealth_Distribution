@@ -4,6 +4,35 @@ import java.util.List;
 public class Simulation {
 	
 	public static void main(String[] args) {
+		switch (Configuration.simulationType) {
+			case MultipleRuns: {
+				multipleRunSim();
+				break;
+			}
+			case ChangeTaxFrom0To100:{
+				increasingTax();
+				break;
+			}
+		}
+	}
+	
+	public static void increasingTax() {
+		List<Stats> statsRuns = new ArrayList<Stats>();
+		for (int i = 0; i < 100; i++) {
+			Configuration.tax = i/100.0f;
+			var stat = run();
+			statsRuns.add(stat);	
+		}		
+		LineGraph<Double> gini = new LineGraph<>("Gini Index varying tax");		
+		
+		for (Stats stats : statsRuns) {
+			gini.add(stats.getGiniIndex().average());
+		}
+		var giniCSV = new CSV(gini);
+		giniCSV.saveTo("");
+	}
+	
+	public static void multipleRunSim() {
 		List<Stats> statsRuns = new ArrayList<Stats>();
 		for (int r = 0; r < Configuration.numRuns; r++) {
 			var stat = run();
@@ -17,6 +46,8 @@ public class Simulation {
 		}
 		
 	}
+	
+
 	
 	public static void printAverages(List<Stats> statsRuns) {
 		double[] averages = new double[3];
@@ -33,10 +64,13 @@ public class Simulation {
 		
 		for (int i = 0; i < averages.length; i++) {
 			averages[i] /= statsRuns.size();
+		}
+		giniAverage /= statsRuns.size();
+		
+		for (int i = 0; i < averages.length; i++) {
+			averages[i] /= statsRuns.size();
 			System.out.println("Average class population " + (i + 1) + " : " + averages[i]);
 		}
-		
-		giniAverage /= statsRuns.size();
 		System.out.println("Average gini : " + giniAverage);
 		
 		

@@ -1,5 +1,10 @@
 
 public class Configuration {
+	
+	public enum SimulationType {
+		MultipleRuns,
+		ChangeTaxFrom0To100
+	}
 
 	public static int gridSize = 51;
 
@@ -15,9 +20,12 @@ public class Configuration {
 	public static int maxGrain = 50; // netlogo global
 	
 	
-	public static double tax = 0.5;
+	public static double tax = 0;
 	public static int numRuns = 3;
+	public static SimulationType simulationType = SimulationType.MultipleRuns;
+
 	
 
-
 }
+
+
