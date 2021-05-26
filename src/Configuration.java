@@ -27,7 +27,7 @@ public class Configuration {
 	
 	public static double tax = 0;
 	public static int numRuns = 3;
-	public static SimulationType simulationType = SimulationType.ChangeTaxFrom0To100;
+	public static SimulationType simulationType = SimulationType.MultipleRuns;
 	public static TaxSystem taxSystem = TaxSystem.Income;
 
 	

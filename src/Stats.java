@@ -7,11 +7,15 @@ public class Stats {
 	private GiniIndex giniIndex = new GiniIndex();
 	private ClassPopulation population = new ClassPopulation(); 
 	private List<LineGraph<Double>> lorenzCurves = new ArrayList<LineGraph<Double>>(); 
+	private IncomeReport incomeReport = new IncomeReport();
+	private WealthReport wealthReport = new WealthReport();
 	
 	public void update(Grid grid) {
 		//classHistogram.update(grid);
 		giniIndex.update(grid);
 		population.update(grid);
+		incomeReport.update(grid);
+		wealthReport.update(grid);
 		//lorenzCurves.add(lorenzCurve.curve(grid));
 	}
 	
@@ -29,5 +33,13 @@ public class Stats {
 	
 	public List<LineGraph<Integer>> getClassPopulation() {
 		return population.getLineGraphs();
+	}
+	
+	public List<LineGraph<Integer>> getIncomeReport(){
+		return incomeReport.getLineGraphs();
+	}
+	
+	public List<LineGraph<Integer>> getWealthReport(){
+		return wealthReport.getLineGraphs();
 	}
 }

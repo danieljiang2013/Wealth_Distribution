@@ -68,7 +68,6 @@ public class Simulation {
 		giniAverage /= statsRuns.size();
 		
 		for (int i = 0; i < averages.length; i++) {
-			averages[i] /= statsRuns.size();
 			System.out.println("Average class population " + (i + 1) + " : " + averages[i]);
 		}
 		System.out.println("Average gini : " + giniAverage);
@@ -88,11 +87,24 @@ public class Simulation {
 		for(int i = 0; i < ticks; i++) {
 			grid.tick();
 			stats.update(grid);
+			//System.out.println(Person.maxIncom);
+//			for (int j = 0; j < Person.incomeCounts.length; j++) {
+//				System.out.print(Person.incomeCounts[j] + ",");
+//			}
+//			System.out.println();
+			
 		}
 		return stats;
 	}
 	
 	public static void saveStat(Stats stats, String prefix) {
+		
+
+		var histoIncome = new CSV(stats.getIncomeReport(), "Income Histograms");
+		histoIncome.saveTo(prefix);
+		
+		var wealthReport = new CSV(stats.getWealthReport(), "Wealth Graph");
+		wealthReport.saveTo(prefix);
 		
 		 var classes = new CSV(stats.getClassHistogram(), "Classes");
 		 classes.saveTo(prefix);

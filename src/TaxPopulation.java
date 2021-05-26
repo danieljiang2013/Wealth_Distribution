@@ -34,7 +34,7 @@ public class TaxPopulation {
 	public int taxRichPeople() {
 		int taxedAmount = 0;
 		for (Person person : population) {
-			if(person.classRank() == 2) {
+			//if(person.classRank() >= 1) {
 				int taxeable = 0;
 				if(Configuration.taxSystem == Configuration.TaxSystem.Income) {
 					taxeable = person.getIncome();
@@ -45,9 +45,11 @@ public class TaxPopulation {
 				}
 				
 				int amountToTax = (int) (taxeable * Configuration.tax);
+				if(amountToTax == 0 && taxeable > 0)
+					amountToTax = 1;
 				person.setWealth(person.getWealth() - amountToTax);
 				taxedAmount += amountToTax;
-			}
+			//}
 		}
 		return taxedAmount;
 	}
