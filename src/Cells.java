@@ -23,7 +23,6 @@ class Cells {
                 setupBestLand(patches.get(x).get(y));
             }
         }
-        System.out.println("\nAfter setting up Best land ");
 
         for (int x = 0; x < 5; x++) {
             repeat5task();

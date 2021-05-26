@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.file.Paths;
 
 public class CSV {
 	String content = "";
@@ -33,7 +34,7 @@ public class CSV {
 				content += lineGraphs.get(j).getCounts().get(i);
 				if(j -1 != lineGraphs.size())
 					content += ",";
-			}			
+			}
 			content += "\n";
 		}
 	
@@ -42,17 +43,18 @@ public class CSV {
 	public void saveTo(String path) {
 	    BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(path + name + ".csv"));
+			String saveName = Paths.get("../").toAbsolutePath().normalize().toString() + "/" + name;
+			writer = new BufferedWriter(new FileWriter( saveName + path + ".csv"));
 			writer.write(content);
-			 
-		} catch (IOException e) {} finally {
+		} catch (IOException e) {
+			System.out.println(e);
+		} finally {
 			try {
 				if(writer != null)
 					writer.close();
-			} catch (IOException e) {}
+			} catch (IOException e) {
+				System.out.println(e);
+			}
 		}
-	   
-	    
-	    
 	}
 }

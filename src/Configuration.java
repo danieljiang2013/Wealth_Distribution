@@ -2,6 +2,7 @@
 public class Configuration {
 	
 	public enum SimulationType {
+		SingleRun,
 		MultipleRuns,
 		ChangeTaxFrom0To100
 	}
@@ -27,11 +28,15 @@ public class Configuration {
 	
 	public static double tax = 0;
 	public static int numRuns = 3;
-	public static SimulationType simulationType = SimulationType.ChangeTaxFrom0To100;
+	public static SimulationType simulationType = SimulationType.MultipleRuns;
+
 	public static TaxSystem taxSystem = TaxSystem.Income;
 
-	
-
+	public static int numRuns() {
+		if (simulationType == SimulationType.MultipleRuns) {
+			return numRuns;
+		} else return 1;
+	}
 }
 
 
