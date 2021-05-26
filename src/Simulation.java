@@ -5,6 +5,7 @@ public class Simulation {
 	
 	public static void main(String[] args) {
 		switch (Configuration.simulationType) {
+			case SingleRun:
 			case MultipleRuns: {
 				multipleRunSim();
 				break;
@@ -19,6 +20,7 @@ public class Simulation {
 	public static void increasingTax() {
 		List<Stats> statsRuns = new ArrayList<Stats>();
 		for (int i = 0; i < 100; i++) {
+			System.out.println("Run - "+ i);
 			Configuration.tax = i/100.0f;
 			var stat = run();
 			statsRuns.add(stat);	
@@ -34,15 +36,16 @@ public class Simulation {
 	
 	public static void multipleRunSim() {
 		List<Stats> statsRuns = new ArrayList<Stats>();
-		for (int r = 0; r < Configuration.numRuns; r++) {
+		for (int r = 0; r < Configuration.numRuns(); r++) {
+			System.out.println("Run - "+ r);
 			var stat = run();
-			statsRuns.add(stat);			
+			statsRuns.add(stat);
 		}
 		
 		printAverages(statsRuns);
 		
 		for (int i = 0; i < statsRuns.size(); i++) {
-			saveStat(statsRuns.get(i),  i + "-");
+			saveStat(statsRuns.get(i),  i + "");
 		}
 		
 	}
@@ -97,7 +100,7 @@ public class Simulation {
 		return stats;
 	}
 	
-	public static void saveStat(Stats stats, String prefix) {
+	public static void saveStat(Stats stats, String suffix) {
 		
 
 		var histoIncome = new CSV(stats.getIncomeReport(), "Income Histograms");
@@ -107,13 +110,13 @@ public class Simulation {
 		wealthReport.saveTo(prefix);
 		
 		 var classes = new CSV(stats.getClassHistogram(), "Classes");
-		 classes.saveTo(prefix);
+		 classes.saveTo(suffix);
 		 var lorenzCurver = new CSV(stats.getLorenzCurves(), "LorenzCurves");
-		 lorenzCurver.saveTo(prefix);
+		 lorenzCurver.saveTo(suffix);
 		 var population = new CSV(stats.getClassPopulation(), "Populations");
-		 population.saveTo(prefix);
+		 population.saveTo(suffix);
 		 var giniIndex = new CSV(stats.getGiniIndex());
-		 giniIndex.saveTo(prefix);
+		 giniIndex.saveTo("");
 	}
 
 }
