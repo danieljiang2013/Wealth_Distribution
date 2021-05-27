@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
 
 public class Person {
 	private int age;
@@ -8,13 +6,13 @@ public class Person {
 	private int lifeExpectancy;
 	private int metabolism;
 	private int vision = Configuration.maxVision;
-	private Cell location;
+	private Patch location;
 	private Grid grid;
 	private int income = 0;
 	
-	public Person(Grid grid, Cell cell) {
+	public Person(Grid grid, Patch patch) {
 		this.grid = grid;
-		this.location = cell;
+		this.location = patch;
 		rebirth();
 		this.age = randomize(this.lifeExpectancy);
 	}
@@ -22,7 +20,6 @@ public class Person {
 	public void move_eat_die() {
 	
 		var direction = determineDirection();
-		
 
 		move(direction);
 		
@@ -35,7 +32,6 @@ public class Person {
 			rebirth();
 		}
 
-		
 	}
 
 	// Returns number of persons that have the same cell location as this object
@@ -61,7 +57,7 @@ public class Person {
 		this.wealth += grainChanged; // increase
 	}
 
-	private void move(Cell newLocation) {
+	private void move(Patch newLocation) {
 		this.location = newLocation;
 	}
 
@@ -129,7 +125,7 @@ public class Person {
 		return wealth;
 	}
 
-	public Cell getLocation() {
+	public Patch getLocation() {
 		return location;
 	}
 
