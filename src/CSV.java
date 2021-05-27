@@ -43,8 +43,8 @@ public class CSV {
 	public void saveTo(String path) {
 	    BufferedWriter writer = null;
 		try {
-			String saveName = Paths.get("../").toAbsolutePath().normalize().toString() + "/" + name;
-			writer = new BufferedWriter(new FileWriter( saveName + path + ".csv"));
+			String saveName = Paths.get("./").toAbsolutePath().normalize().toString() + "/" + path + name;
+			writer = new BufferedWriter(new FileWriter( saveName + ".csv"));
 			writer.write(content);
 		} catch (IOException e) {
 			System.out.println(e);

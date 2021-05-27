@@ -100,7 +100,7 @@ public class Simulation {
 		return stats;
 	}
 	
-	public static void saveStat(Stats stats, String suffix) {
+	public static void saveStat(Stats stats, String prefix) {
 		
 
 		var histoIncome = new CSV(stats.getIncomeReport(), "Income Histograms");
@@ -109,12 +109,15 @@ public class Simulation {
 		var wealthReport = new CSV(stats.getWealthReport(), "Wealth Graph");
 		wealthReport.saveTo(prefix);
 		
+		var properties = new CSV(stats.getClassProperties(), "Properties");
+		properties.saveTo(prefix);
+		
 		 var classes = new CSV(stats.getClassHistogram(), "Classes");
-		 classes.saveTo(suffix);
+		 classes.saveTo(prefix);
 		 var lorenzCurver = new CSV(stats.getLorenzCurves(), "LorenzCurves");
-		 lorenzCurver.saveTo(suffix);
+		 lorenzCurver.saveTo(prefix);
 		 var population = new CSV(stats.getClassPopulation(), "Populations");
-		 population.saveTo(suffix);
+		 population.saveTo(prefix);
 		 var giniIndex = new CSV(stats.getGiniIndex());
 		 giniIndex.saveTo("");
 	}

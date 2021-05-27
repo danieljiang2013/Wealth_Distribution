@@ -17,8 +17,10 @@ public class LineGraph<T extends Number > {
 	}
 	
 	public void add(T value) {
-		counts.add(value);
-		sum += value.doubleValue();
+		if(value != null) {
+			counts.add(value);
+			sum += value.doubleValue();
+		}
 	}
 
 	public String getName() {

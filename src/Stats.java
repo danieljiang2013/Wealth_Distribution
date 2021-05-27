@@ -9,6 +9,7 @@ public class Stats {
 	private List<LineGraph<Double>> lorenzCurves = new ArrayList<LineGraph<Double>>(); 
 	private IncomeReport incomeReport = new IncomeReport();
 	private WealthReport wealthReport = new WealthReport();
+	private RecordClassProperties classProperties = new RecordClassProperties();
 	
 	public void update(Grid grid) {
 		//classHistogram.update(grid);
@@ -16,6 +17,7 @@ public class Stats {
 		population.update(grid);
 		incomeReport.update(grid);
 		wealthReport.update(grid);
+		classProperties.update(grid);
 		//lorenzCurves.add(lorenzCurve.curve(grid));
 	}
 	
@@ -41,5 +43,9 @@ public class Stats {
 	
 	public List<LineGraph<Integer>> getWealthReport(){
 		return wealthReport.getLineGraphs();
+	}
+	
+	public List<LineGraph<Integer>> getClassProperties(){
+		return classProperties.getLineGraphs();
 	}
 }

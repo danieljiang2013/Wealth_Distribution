@@ -140,4 +140,20 @@ public class Person {
 	public int getIncome() {
 		return this.income;
 	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public int getLifeExptancy() {
+		return lifeExpectancy;
+	}
+
+	public int getMetabolism() {
+		return metabolism;
+	}
+	
+	public int getVision() {
+		return vision;
+	}
 }

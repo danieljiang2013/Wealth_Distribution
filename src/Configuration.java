@@ -12,7 +12,7 @@ public class Configuration {
 		Income
 	}
 
-	public static int gridSize = 51;
+	
 
 	public static int numPeople = 250;
 	public static int maxVision = 5;
@@ -21,16 +21,23 @@ public class Configuration {
 	public static int lifeExpectancyMax = 83;
 	public static double percentBestLand = 0.1;
 
-	public static int numGrainGrown = 4;
+	
 	public static int gainGrowthInterval = 1;
+	public static int numGrainGrown = 4;
+	
+	public static int gridSize = 51;
 	public static int maxGrain = 50; // netlogo global
 	
 	
 	public static double tax = 0;
 	public static int numRuns = 3;
-	public static SimulationType simulationType = SimulationType.MultipleRuns;
+	public static SimulationType simulationType = SimulationType.ChangeTaxFrom0To100;
 
-	public static TaxSystem taxSystem = TaxSystem.Income;
+	public static TaxSystem taxSystem = TaxSystem.Wealth;
+	
+	
+	
+	
 
 	public static int numRuns() {
 		if (simulationType == SimulationType.MultipleRuns) {
