@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is a generic representation of a stat that can
+ * be calculated in the system.
+ * @param <T>
+ */
 public class LineGraph<T extends Number > {
 	private String name = "";
 	private Double sum = 0.0;
@@ -9,7 +14,6 @@ public class LineGraph<T extends Number > {
 	
 	public LineGraph(String name) {
 		this.name = name;
-		
 	}
 	
 	public List<T> getCounts() {
@@ -26,21 +30,9 @@ public class LineGraph<T extends Number > {
 	public String getName() {
 		return name;
 	}
-	
 	public double average() {
 		return sum.doubleValue() / counts.size();
 	}
-	
-	public static Number addNumbers(Number a, Number b) {
-	    if(a instanceof Double || b instanceof Double) {
-	        return a.doubleValue() + b.doubleValue();
-	    } else if(a instanceof Float || b instanceof Float) {
-	        return a.floatValue() + b.floatValue();
-	    } else if(a instanceof Long || b instanceof Long) {
-	        return a.longValue() + b.longValue();
-	    } else {
-	        return a.intValue() + b.intValue();
-	    }
-	}
+
 	
 }

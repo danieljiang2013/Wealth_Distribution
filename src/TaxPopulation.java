@@ -9,11 +9,10 @@ public class TaxPopulation {
 	}
 	
 	void tick() {
-		var poorPeople = getPoorPeople();
-		
-		if(poorPeople.size() == 0)
+		if(getPoorPeople().size() == 0)
 			return;
-		
+
+		var poorPeople = getPoorPeople();
 		int taxedAmount = taxRichPeople();		
 		
 		giveWealthToPoor(taxedAmount, poorPeople);
