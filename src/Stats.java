@@ -14,6 +14,14 @@ public class Stats {
 	private RecordClassProperties classProperties = new RecordClassProperties();
 	private List<IStatistic> stats = new ArrayList<IStatistic>();
 	
+	public Stats() {
+		stats.add(giniIndex);
+		stats.add(population);
+		stats.add(incomeReport);
+		stats.add(wealthReport);
+		stats.add(classProperties);
+	}
+	
 
 	/**
 	 * This method is called on each tick of the simulation.
@@ -51,6 +59,10 @@ public class Stats {
 		return classProperties.getLineGraphs();
 	}
 	
+	/**
+	 * This method generates a CSV file for each of the statistic
+	 * calculated
+	 */
 	public void saveStats(String prefix){
 		new CSV(incomeReport.getLineGraphs(), "Income Histograms").saveTo(prefix);				
 		new CSV(wealthReport.getLineGraphs(), "Wealth Graph").saveTo(prefix);

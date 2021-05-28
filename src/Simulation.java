@@ -86,18 +86,4 @@ public class Simulation {
 		}
 		new CSV(gini).saveTo("");
 	}
-
-
-	/**
-	 * This method generates a CSV file for each of the statistic
-	 * calculated
-	 */
-	private static void saveStat(Stats stats, String suffix) {
-		System.out.println("Generated Files - ");
-		new CSV(stats.getIncomeReport(), "Income_Histograms").saveTo(suffix);
-		new CSV(stats.getWealthReport(), "Wealth_Graphs").saveTo(suffix);
-		new CSV(stats.getClassProperties(), "Properties").saveTo(suffix);
-		new CSV(stats.getClassPopulation(), "Populations").saveTo(suffix);
-		new CSV(stats.getGiniIndex()).saveTo("");
-	}
 }
