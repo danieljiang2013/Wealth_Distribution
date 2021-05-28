@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class IncomeReport {
+public class IncomeReport implements IStatistic {
 	private int[][] incomes = new int[3][50];
 	
 	public IncomeReport() {

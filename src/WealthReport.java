@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class WealthReport {
+public class WealthReport implements IStatistic {
 	List<LineGraph<Integer>> classes;
 	
 	public WealthReport() {

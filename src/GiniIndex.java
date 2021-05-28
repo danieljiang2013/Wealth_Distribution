@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GiniIndex {
+public class GiniIndex implements IStatistic {
 
 	private LineGraph<Double> graph = new LineGraph<Double>("Gini Index");
 	

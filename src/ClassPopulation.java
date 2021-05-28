@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ClassPopulation {
+public class ClassPopulation implements IStatistic {
 	private List<LineGraph<Integer>> classes = new ArrayList<LineGraph<Integer>>();
 	
 	public ClassPopulation() {
