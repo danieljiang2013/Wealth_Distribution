@@ -54,7 +54,7 @@ public class CSV {
 	    BufferedWriter writer = null;
 		String saveName = "";
 		try {
-			saveName = Paths.get("./").toAbsolutePath().normalize().toString()
+			saveName = Paths.get("../").toAbsolutePath().normalize().toString()
 					+ "/" + name + path + ".csv";
 			writer = new BufferedWriter(new FileWriter(saveName));
 			writer.write(content);
