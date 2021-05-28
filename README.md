@@ -1,10 +1,13 @@
 # Wealth Distribution Model - Java Implementation
 
-All configuration and simulation parameters are defined in `src/Configuration.java`. The default value of `simulationType` should be `SimulationType.SingleRun` unless running the extension version
+All configuration and simulation parameters are defined in `src/Configuration.java`. 
+The default value of `simulationType` should be `SimulationType.SingleRun` unless running the extension version
 
 Output is generated in the form of CSV files at this root directory.
 
 ## Compile & Run
+ 
+Use either `run.sh` or `run.bat`. Alternatively, use the commands below
 
 ```shell
 javac -d class/ src/*.java 
