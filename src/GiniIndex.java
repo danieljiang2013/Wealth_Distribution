@@ -5,7 +5,7 @@ import java.util.Collections;
  * This class is used to calculate the gini index for a distribution
  * of wealth amongst the 3 classes.
  */
-public class GiniIndex implements IStatistic {
+public class GiniIndex {
 
 	private LineGraph<Double> graph = new LineGraph<>("Gini_Index");
 	/**

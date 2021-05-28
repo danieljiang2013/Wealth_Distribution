@@ -18,7 +18,6 @@ public class Simulation {
 				break;
 			}
 			default -> {
-				Configuration.numRuns = 1; // run once as default
 				runSim();
 				break;
 			}

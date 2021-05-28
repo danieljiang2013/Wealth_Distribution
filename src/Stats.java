@@ -12,15 +12,6 @@ public class Stats {
 	private IncomeReport incomeReport = new IncomeReport();
 	private WealthReport wealthReport = new WealthReport();
 	private RecordClassProperties classProperties = new RecordClassProperties();
-	private List<IStatistic> stats = new ArrayList<IStatistic>();
-	
-	public Stats() {
-		stats.add(giniIndex);
-		stats.add(population);
-		stats.add(incomeReport);
-		stats.add(wealthReport);
-		stats.add(classProperties);
-	}
 	
 
 	/**
@@ -29,9 +20,11 @@ public class Stats {
 	 * @param grid - for which the statistics are to be calculated
 	 */
 	public void update(Grid grid) {
-		for (IStatistic iStatistic : stats) {
-			iStatistic.update(grid);
-		}
+		giniIndex.update(grid);
+		population.update(grid);
+		incomeReport.update(grid);
+		wealthReport.update(grid);
+		classProperties.update(grid);
 	}
 	
 

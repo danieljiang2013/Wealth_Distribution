@@ -4,11 +4,10 @@ import java.util.List;
  * This class calculates the income of people in each of the 3
  * wealth classes.
  */
-public class IncomeReport  implements IStatistic  {
+public class IncomeReport  {
 	private static final int numClasses = 3;
 	private int[][] incomes = new int[numClasses][Configuration.gridSize - 1];
 	
-	public IncomeReport() {}
 	/**
 	 * On each tick, this method is called and it calculates the
 	 * incomes for each class

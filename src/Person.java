@@ -34,7 +34,7 @@ public class Person {
 
 	}
 
-	// Returns number of persons that have the same cell location as this object
+	// Returns number of persons that have the same patch location as this object
 	public int numPeopleOnSamePatch(){
 		var persons = grid.getPopulation();
 		var ret = 0;
@@ -75,7 +75,7 @@ public class Person {
 			int totalGrain = 0;
 			for (int i = 1; i <= vision; i++) {
 				var newPos = location.getPosition().add(direction.multiply(i));
-				totalGrain += grid.cellAt(newPos.x, newPos.y).getGrain();
+				totalGrain += grid.patchAt(newPos.x, newPos.y).getGrain();
 			}
 			if (totalGrain > bestTotal) {
 				bestDirection = direction;
@@ -88,7 +88,7 @@ public class Person {
 
 	private void move(Vector2<Integer> direction) {
 		var newPosition = location.getPosition().add(direction);
-		var newCell = grid.cellAt(newPosition.x, newPosition.y);
+		var newCell = grid.patchAt(newPosition.x, newPosition.y);
 		move(newCell);
 	}
 	private int randomize(int limit){

@@ -18,7 +18,7 @@ public class Configuration {
 	// Experimentation parameters
 	public static final TaxSystem taxSystem = TaxSystem.Wealth; // or TaxSystem.Income
 	public static double tax = 0; // automatically varied from 0 - 100
-	public static int numRuns = 3;
+	private static int numRuns = 3;
 
 	public enum SimulationType {
 		SingleRun, // Default

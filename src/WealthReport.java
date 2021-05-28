@@ -4,7 +4,7 @@ import java.util.List;
  * This class calculates the wealth of people in each of the 3
  * wealth classes.
  */
-public class WealthReport implements IStatistic {
+public class WealthReport {
 	List<LineGraph<Integer>> classes;
 	
 	public WealthReport() {

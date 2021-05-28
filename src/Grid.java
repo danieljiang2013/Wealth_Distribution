@@ -31,7 +31,7 @@ public class Grid {
 		population = new ArrayList<Person>();
 		for(int i = 0; i < numPeople; i ++) {
 			population.add(new Person(this,
-					cellAt(randomize(), randomize())));
+					patchAt(randomize(), randomize())));
 		}
 		taxPopulation = new TaxPopulation(population);
 	}
@@ -44,7 +44,7 @@ public class Grid {
 		return 0;
 	}
 	// Returns the patch at the specified coordinates
-	public Patch cellAt(int x, int y) {
+	public Patch patchAt(int x, int y) {
 		int xx = x % size;
 		if(xx < 0) {
 			xx = size + xx;
@@ -53,7 +53,7 @@ public class Grid {
 		if(yy < 0) {
 			yy = size + yy;
 		}
-		return patches.getCellAt(xx,yy);
+		return patches.getPatchAt(xx,yy);
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class Grid {
 		return population;
 	}
 
-	public void calcMostWealth() {
+	private void calcMostWealth() {
 		mostWealth = 0;
 		for (int i = 0; i < population.size(); i++) {
 			if (population.get(i).getWealth() > mostWealth) {

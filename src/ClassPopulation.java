@@ -5,7 +5,7 @@ import java.util.List;
  * This class calculates the number of people that are present
  * in each of the 3 wealth classes.
  */
-public class ClassPopulation implements IStatistic {
+public class ClassPopulation {
 	private List<LineGraph<Integer>> classes;
 	
 	public ClassPopulation() {

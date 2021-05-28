@@ -48,7 +48,7 @@ class Patches {
         setMaxGrain();
     }
 
-    public void printCells() {
+    public void printPatchs() {
         System.out.println("x,y | CurrentGrain | Max-Grain ");
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
@@ -63,7 +63,7 @@ class Patches {
         return (Math.random());
     }
 
-    public Patch getCellAt(int x, int y) {
+    public Patch getPatchAt(int x, int y) {
         return patches.get(x).get(y);
     }
 

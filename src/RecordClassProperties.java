@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecordClassProperties implements IStatistic {
+public class RecordClassProperties  {
 	private ArrayList<ArrayList<LineGraph<Integer>>> classes = new ArrayList<ArrayList<LineGraph<Integer>>>();
 	
 	public RecordClassProperties() {
