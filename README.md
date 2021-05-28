@@ -19,7 +19,7 @@ Type|Description|`src/Configuration.java`
 ---|---|---
 **SingleRun** (default)|runs the simulation once for `numTicks`|Set `simulationType = SimulationType.SingleRun`
 MultipleRuns|runs the simulation `numRuns` times,each for `numTicks`|Set `simulationType = SimulationType.MultipleRuns`
-ChangeTaxFrom0To100|runs the simulation 100 times with tax increasing from 0 - 99 after each run. Tax can be selected to be on either 'wealth' or on 'income'| - Set `simulationType = SimulationType.ChangeTaxFrom0To100` & set `taxSystem` as one of `TaxSystem.Wealth` or `TaxSystem.Income`
+ChangeTaxFrom0To100|runs the simulation 100 times with tax increasing from 1 - 100 after each run. Tax can be selected to be on either 'wealth' or on 'income'| - Set `simulationType = SimulationType.ChangeTaxFrom0To100` & set `taxSystem` as one of `TaxSystem.Wealth` or `TaxSystem.Income`
 
 
 ### Analysis
